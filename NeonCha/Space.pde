@@ -4,7 +4,7 @@ class Space {
   PVector acceleration;
   PVector velocity;
   PVector location;
- space(float m, float y) {
+ Space(float m, float y) {
    mass = m;
    posy = y;
    location = new PVector(random(0,width),0);
