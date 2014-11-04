@@ -18,7 +18,7 @@ class Space {
 
 void display() {
   fill(255);
-  ellipse(location.x,location.y,mass,mass*2);
+  ellipse(location.x,location.y,mass,mass*4);
   
  
 }
@@ -28,6 +28,8 @@ void move() {
   velocity.limit(maxSpeed);
   location.add(velocity);
   acceleration.mult(0);
+  
+  
   
 }
 
