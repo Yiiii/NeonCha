@@ -1,12 +1,12 @@
-Class C {
+class C {
 
   c() {
   }
 
-  void display {
+  void display() {
   }
 
-  void move {
+  void move() {
   }
 }
 

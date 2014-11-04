@@ -1,12 +1,12 @@
-Class B {
+class B {
 
   b() {
   }
 
-  void display {
+  void display() {
   }
 
-  void move {
+  void move() {
   }
 }
 
