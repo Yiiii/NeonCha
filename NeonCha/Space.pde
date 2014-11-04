@@ -17,6 +17,7 @@ class Space {
  }
 
 void display() {
+  noStroke();
   fill(255);
   ellipse(location.x,location.y,mass,mass*4);
   
