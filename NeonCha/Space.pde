@@ -4,14 +4,20 @@ class Space {
   PVector acceleration;
   PVector velocity;
   PVector location;
- Space(float m, float y) {
+  float maxSpeed;
+  
+ Space(float m, float x, float y) {
    mass = m;
-   posy = y;
-   location = new PVector(random(0,width),0);
-   velocity = new PVector(0,1);
+   maxSpeed = 10;
+   location = new PVector(0,0);
+   velocity = new PVector(0,5);
+   acceleration = new PVector(0,0);
+   location.x = x;
+   location.y = y;
  }
 
 void display() {
+  fill(255);
   ellipse(location.x,location.y,mass,mass*2);
   
  
@@ -19,14 +25,16 @@ void display() {
 
 void move() {
   velocity.add(acceleration);
-  velocity.limit(maxspeed);
+  velocity.limit(maxSpeed);
   location.add(velocity);
   acceleration.mult(0);
   
 }
 
 void collision() {
-  
+  if(location.y > height) {
+    location.y = 0;
+  }
 }
 
 void applyForce(PVector force) {
