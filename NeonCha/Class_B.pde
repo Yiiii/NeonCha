@@ -1,6 +1,6 @@
 class B {
 
-  b() {
+  B() {
   }
 
   void display() {

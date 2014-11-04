@@ -1,6 +1,6 @@
 class C {
 
-  c() {
+  C() {
   }
 
   void display() {

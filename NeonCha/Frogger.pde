@@ -1,6 +1,6 @@
 class Frogger {
 
-  frogger() {
+  Frogger() {
   }
 
 
