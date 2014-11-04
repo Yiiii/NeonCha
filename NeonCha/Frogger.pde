@@ -2,11 +2,11 @@ class Frogger {
 
   PVector position;
   int size;
-  float frogSpeed;
+
 
   Frogger() {
     size = 50;
-    frogSpeed = 10;
+    frogSpeed = 0;
     position = new PVector(width/2, height);
   }
 
@@ -36,6 +36,18 @@ class Frogger {
 
 
   void collision() {
+    if (position.x - (size/2) < 0) {
+    position.x += frogSpeed;
+    }
+    if (position.x + (size/2) > width) {
+    position.x -= frogSpeed;
+    }
+    if (position.y - (size/2) < 0) {
+    position.y += frogSpeed;
+    }
+    if (position.y + (size/2) > height) {
+    position.y -= frogSpeed;
+    }
   }
 }
 

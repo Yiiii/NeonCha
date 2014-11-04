@@ -6,6 +6,7 @@ boolean upPressed;
 boolean downPressed;
 boolean rightPressed;
 boolean leftPressed;
+float frogSpeed;
 
 void setup() {
   size(600, 600);
@@ -19,7 +20,7 @@ void setup() {
 }
 
 void draw() {
-background(0);
+  background(0);
 
   
   for (int i = 0; i <spaceParticles.length; i++) {
@@ -32,7 +33,8 @@ background(0);
 
   frog.display();
   frog.move();
-  //guy.update();
+  frog.collision();
+  
 } 
 
 
