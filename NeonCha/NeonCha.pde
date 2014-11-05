@@ -7,9 +7,11 @@ boolean downPressed;
 boolean rightPressed;
 boolean leftPressed;
 float frogSpeed;
+int bigness;
 
 void setup() {
   size(600, 600);
+  bigness = 1;
 
   for (int i = 0; i <spaceParticles.length; i++) {
     spaceParticles[i] = new Space(random(1, 3), random(0, width), random(0, height));
@@ -31,11 +33,22 @@ void draw() {
     spaceParticles[i].applyForce(wind);
   }
 
+  sections();
   frog.display();
   frog.move();
   frog.collision();
   
+  
 } 
+
+void sections() {
+  rectMode(CENTER);
+  stroke(255);
+  fill(100,100);
+  for(int i = 0; i <4; i++) {
+  rect(width/2,(i*185)+20,width+5,height/10);
+  }
+}
 
 
 void timer() {
