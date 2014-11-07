@@ -9,6 +9,7 @@ boolean leftPressed;
 float frogSpeed;
 int bigness;
 
+
 float r;//endscreen the frog will rotate
 PImage frogEnd, frogStart;
 PVector frogEndVel,frogStartVel;
@@ -35,6 +36,8 @@ void setup() {
   r=0;
 //  frog.position.x=width/2;
 //  frog.position.y=650;
+
+
   
   for (int i = 0; i <spaceParticles.length; i++) {
     spaceParticles[i] = new Space(random(1, 3), random(0, width), random(0, height));
@@ -47,12 +50,13 @@ void setup() {
 void draw() {
  
 background(0);
+ universe();
   score(); //use lifepoint to decide which screen should appear
   if(lifePoint>0){
-    if(lifePoint<=5&&frog.position.y<650){
+    if(lifePoint<=5){
   //if lifepoint is bigger than 0, and frog has been moved, then play mode is on
   
-  universe();
+ 
 
   sections();
   endZone();
@@ -114,38 +118,21 @@ void winScreen() {
 
 
 void startScreen() {
-  if(gametime<1){
-    universe();
+//  if(gametime<1){
     pushMatrix();
-    translate(width/2,height/2);
+    translate(width/2,height/2-100);
   rotate(radians(r));
-    image(frogStart,width/2,height/2);
+    image(frogStart,0,0);
     popMatrix();
-    r+=5;
+    r+=1;
     //text:Click to start game. then the lifepoint will be set as 5
     }
   
-  else{
-    universe();
-    frog.position.y=frog.position.y+frogStartVel.y;
-    if(frog.position.y<=580){
-    frogStartVel.y=0;
-    }
-    pushMatrix();
-    translate(width/2,height/2);
-  rotate(radians(r));
-    image(frogStart, frog.position.x, frog.position.y);
-    popMatrix();
-    r+=5;
-    //text
-  }
-}
+
 
 void endScreen() {
   frog.position.x=width/2;
   frog.position.y=650;
-  
-  universe();
   
   pushMatrix();
   translate(width/2,height/2);
@@ -162,7 +149,7 @@ void hit(){
 
 
 void mouseClicked(){
-  if(lifePoint<=0){
+  if(lifePoint<=0||lifePoint==6){
   lifePoint=5;
   gametime++;
   }

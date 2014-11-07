@@ -1,13 +1,15 @@
 class Frogger {
 
-  PVector position;
+  PVector position=new PVector(width/2, height);;
   int size;
 
 
   Frogger() {
     size = 50;
     frogSpeed = 0;
-    position = new PVector(width/2, height);
+  
+
+   
   }
 
 
