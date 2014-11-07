@@ -12,7 +12,6 @@ class Frogger {
 
 
   void display() {
-    noStroke();
     fill(0, 200, 0);
     rectMode(CENTER);
     rect(position.x, position.y, size, size);
