@@ -31,10 +31,10 @@ void setup() {
   frogEndVel=new PVector(0,-5);
   frogStart=loadImage("frog_start.png");
   //life point
-  lifePoint=5;
+  lifePoint=6;
   r=0;
-  frog.position.x=width/2;
-  frog.position.y=650;
+//  frog.position.x=width/2;
+//  frog.position.y=650;
   
   for (int i = 0; i <spaceParticles.length; i++) {
     spaceParticles[i] = new Space(random(1, 3), random(0, width), random(0, height));
@@ -47,10 +47,10 @@ void setup() {
 void draw() {
  
 background(0);
-  score();
+  score(); //use lifepoint to decide which screen should appear
   if(lifePoint>0){
-    if(frog.position.y<=650){
-  
+    if(lifePoint<=5&&frog.position.y<650){
+  //if lifepoint is bigger than 0, and frog has been moved, then play mode is on
   
   universe();
 
@@ -61,10 +61,12 @@ background(0);
   frog.collision();
   
 }
-  else if (frog.position.y>650){
+  else {
+    //if lifepoint is bigger than 0, and frog position is just ready, then start screen
   startScreen();
 }
   }
+  //if the lifepoint reaches 0, frog died and endScreen was shown
   else{
     endScreen();
   }
@@ -105,6 +107,12 @@ void score() {
   
 }
 
+void winScreen() {
+  
+  
+}
+
+
 void startScreen() {
   if(gametime<1){
     universe();
@@ -114,7 +122,7 @@ void startScreen() {
     image(frogStart,width/2,height/2);
     popMatrix();
     r+=5;
-    //text
+    //text:Click to start game. then the lifepoint will be set as 5
     }
   
   else{
@@ -155,7 +163,7 @@ void hit(){
 
 void mouseClicked(){
   if(lifePoint<=0){
-  setup();
+  lifePoint=5;
   gametime++;
   }
 }
