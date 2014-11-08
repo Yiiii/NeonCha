@@ -35,8 +35,7 @@ void setup() {
   //life point
   lifePoint=6;
   r=0;
-//  frog.position.x=width/2;
-//  frog.position.y=650;
+
 
 
   
@@ -46,6 +45,9 @@ void setup() {
   frog = new Frogger();
   //guy = new CreaturePrime();
   //guy.prime();
+  
+    frog.position.x=width/2;
+  frog.position.y=650;
 }
 
 void draw() {
@@ -124,7 +126,7 @@ void startScreen() {
     pushMatrix();
     translate(width/2,height/2-150);
   rotate(radians(r));
-    image(frogStart,0,0);
+    image(frogStart,-50,0);
     popMatrix();
     
     r+=1;
