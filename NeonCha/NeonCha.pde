@@ -11,7 +11,7 @@ int bigness;
 
 
 float r;//endscreen the frog will rotate
-PImage frogEnd, frogStart;
+PImage frogEnd, frogStart,startText;
 PVector frogEndVel,frogStartVel;
 int lifePoint;
 int gametime=0;
@@ -31,6 +31,7 @@ void setup() {
   frogEndVel=new PVector(random(-10,10),random(-10,10));
   frogEndVel=new PVector(0,-5);
   frogStart=loadImage("frog_start.png");
+  startText=loadImage("starttext.png");
   //life point
   lifePoint=6;
   r=0;
@@ -119,11 +120,13 @@ void winScreen() {
 
 void startScreen() {
 //  if(gametime<1){
+  image(startText,0,300);
     pushMatrix();
-    translate(width/2,height/2-100);
+    translate(width/2,height/2-150);
   rotate(radians(r));
     image(frogStart,0,0);
     popMatrix();
+    
     r+=1;
     //text:Click to start game. then the lifepoint will be set as 5
     }
