@@ -15,12 +15,28 @@ int bigness;
 void setup() {
   size(600, 600);
   bigness = 1;
+<<<<<<< HEAD
+=======
+  
+//pictures
+  frogEnd=loadImage("frog_end.png");
+  frogEndVel=new PVector(random(-10,10),random(-10,10));
+  frogEndVel=new PVector(0,-5);
+  frogStart=loadImage("frog_start.png");
+  startText=loadImage("starttext.png");
+  //life point
+  lifePoint=6;
+  r=0;
+//  frog.position.x=width/2;
+//  frog.position.y=650;
+>>>>>>> parent of f5f4e40... Minor Fix 01
 
   for (int i = 0; i <spaceParticles.length; i++) {
     spaceParticles[i] = new Space(random(1, 3), random(0, width), random(0, height));
   }
 
   frog = new Frogger();
+<<<<<<< HEAD
 
   for (int i = 0; i <spaceship1.length; i++) {
     spaceship1[i] = new A(i*random(240,260));
@@ -30,6 +46,10 @@ void setup() {
     spaceship2[i] = new B(i*random(240,260));
   }
 
+=======
+  //guy = new CreaturePrime();
+  //guy.prime();
+>>>>>>> parent of f5f4e40... Minor Fix 01
 }
 
 void draw() {
@@ -90,7 +110,23 @@ void score() {
 }
 
 void startScreen() {
+<<<<<<< HEAD
 }
+=======
+//  if(gametime<1){
+  image(startText,0,300);
+    pushMatrix();
+    translate(width/2,height/2-150);
+  rotate(radians(r));
+    image(frogStart,0,0);
+    popMatrix();
+    
+    r+=1;
+    //text:Click to start game. then the lifepoint will be set as 5
+    }
+  
+
+>>>>>>> parent of f5f4e40... Minor Fix 01
 
 void endScreen() {
 }
