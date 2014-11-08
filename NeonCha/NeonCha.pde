@@ -31,7 +31,6 @@ void setup() {
   //pictures
   frogEnd=loadImage("frog_end.png");
   frogEndVel=new PVector(random(-10, 10), random(-10, 10));
-  frogEndVel=new PVector(0, -5);
   frogStart=loadImage("frog_start.png");
   startText=loadImage("starttext.png");
   //life point
@@ -92,7 +91,7 @@ void draw() {
       frog.collision();
     } else {
       //if lifepoint is bigger than 0, and frog position is just ready, then start screen
-      startScreen();
+      endScreen();
     }
   }
   //if the lifepoint reaches 0, frog died and endScreen was shown
@@ -154,14 +153,14 @@ void startScreen() {
 
 void endScreen() {
   frog.position.x=width/2;
-  frog.position.y=650;
+  frog.position.y=height/2;
 
   pushMatrix();
-  translate(width/2, height/2);
+  translate(frog.position.x-frogEndVel.x, frog.position.y-frogEndVel.y);
   rotate(radians(r));
-  image(frogEnd, frog.position.x-frogEndVel.x, frog.position.y-frogEndVel.y);
+  image(frogEnd,0,0 );
   popMatrix();
-  r+=5;
+  r+=1;
 }
 
 void hit() {
