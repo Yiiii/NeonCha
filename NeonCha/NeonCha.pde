@@ -18,7 +18,7 @@ PVector frogEndVel, frogStartVel;
 int lifePoint;
 int gametime=0;
 Boolean justStart;
-int score = 5;
+int score = 6;
 /*here means the frog has certaim life point, everytime the frog was hit,
  its life point will minus one. Frog will die when its life point reaches zero.
  this is just my imagination of the scoring. I'll do the start and end according to this.*/
@@ -119,6 +119,7 @@ void endZone () {
 
 //A clock countdown. When a certain amount of time passes, the game is reset and the player must try again.
 void timer() {
+  
 }
 
 

@@ -21,5 +21,10 @@ class C {
     println(posC.x);
     println(velC);
   }
+  void collision() {
+    if (posC.x < -110) {
+      posC.x = width;
+    }
+  }
 }
 
