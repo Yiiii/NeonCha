@@ -16,7 +16,7 @@
       lScore++;
     }
     //right paddle
-    if (ballPos.x+Size/2 >= p2x-(paddleDim.x*.5)) {
+    if (Pos.x+Size/2 >= p2x-(paddleDim.x*.5)) {
       Pos.x=(p2x-(paddleDim.x*.5))-Size/2-1;
       Vel.x*=-1;
       rScore++;
