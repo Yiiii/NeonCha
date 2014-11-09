@@ -183,6 +183,13 @@ void endScreen() {
 }
 
 void hit() {
+  //if(frog.position.x-size/2<posB.x){
+    //score--;
+  //}
+    //if(score==0){
+      //setup();
+    //}
+  
 }
 
 
