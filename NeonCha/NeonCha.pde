@@ -13,12 +13,12 @@ int bigness;
 
 
 float r;//endscreen the frog will rotate
-PImage frogEnd, frogStart, startText;
+PImage frogEnd, frogStart, startText,endText;
 PVector frogEndVel, frogStartVel;
 int lifePoint;
 int gametime=0;
 Boolean justStart;
-int score = 6;
+int score;
 int timeSizeX=100;
 int timeSizeY=10;
 int timePosX=470;
@@ -37,6 +37,7 @@ void setup() {
   frogEndVel=new PVector(random(-10, 10), random(-10, 10));
   frogStart=loadImage("frog_start.png");
   startText=loadImage("starttext.png");
+  endText=loadImage("endtext.png");
   //life point
   lifePoint=6;
   r=0;
@@ -97,7 +98,7 @@ void draw() {
       
     } else {
       //if lifepoint is bigger than 0, and frog position is just ready, then start screen
-      endScreen();
+      startScreen();
     }
   }
   //if the lifepoint reaches 0, frog died and endScreen was shown
@@ -137,8 +138,8 @@ void timer() {
 
 void score() {
   textSize(20);
-  text(score, 100, 580);
-  text("Score",10,580);
+  text(lifePoint, 100, 580);
+  text("Lives",10,580);
   text("Time",540,580);
   
   //  /*when the frog was hit, its lifepoint minust one, so when he die, it was zero.*/
@@ -173,12 +174,13 @@ void startScreen() {
 void endScreen() {
   frog.position.x=width/2;
   frog.position.y=height/2;
-
+image(endText,0,300 );
   pushMatrix();
   translate(frog.position.x-frogEndVel.x, frog.position.y-frogEndVel.y);
   rotate(radians(r));
   image(frogEnd,0,0 );
   popMatrix();
+  
   r+=1;
 }
 
