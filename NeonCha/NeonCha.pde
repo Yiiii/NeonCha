@@ -19,6 +19,9 @@ int lifePoint;
 int gametime=0;
 Boolean justStart;
 int score = 6;
+int timeSizeX=100;
+int timeSizeY=10;
+int timePosX=470;
 /*here means the frog has certaim life point, everytime the frog was hit,
  its life point will minus one. Frog will die when its life point reaches zero.
  this is just my imagination of the scoring. I'll do the start and end according to this.*/
@@ -67,7 +70,7 @@ void draw() {
 
 
 
-  score(); //use lifepoint to decide which screen should appear
+  
   if (lifePoint>0) {
     if (lifePoint<=5) {
       //if lifepoint is bigger than 0, and frog has been moved, then play mode is on
@@ -84,12 +87,14 @@ void draw() {
         spaceship2[i].collision();
       }
 
-
+      score(); //use lifepoint to decide which screen should appear
+      timer();
       sections();
       endZone();
       frog.display();
       frog.move();
       frog.collision();
+      
     } else {
       //if lifepoint is bigger than 0, and frog position is just ready, then start screen
       endScreen();
@@ -119,14 +124,22 @@ void endZone () {
 
 //A clock countdown. When a certain amount of time passes, the game is reset and the player must try again.
 void timer() {
+  fill(255);
+  rect(timePosX,575,timeSizeX,timeSizeY);
+  
+    //timeSizeX-=0.1;
+    if (timeSizeX==0){
+      timeSizeX=100;
+    }
   
 }
 
 
 void score() {
-  textSize(30);
-  text(score,100,30);
-  text("Score",5,30);
+  textSize(20);
+  text(score, 100, 580);
+  text("Score",10,580);
+  text("Time",540,580);
   
   //  /*when the frog was hit, its lifepoint minust one, so when he die, it was zero.*/
   //  if(/*frog's frogPos.y<20*/){
