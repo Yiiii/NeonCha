@@ -18,6 +18,7 @@ PVector frogEndVel, frogStartVel;
 int lifePoint;
 int gametime=0;
 Boolean justStart;
+int score = 5;
 /*here means the frog has certaim life point, everytime the frog was hit,
  its life point will minus one. Frog will die when its life point reaches zero.
  this is just my imagination of the scoring. I'll do the start and end according to this.*/
@@ -122,6 +123,10 @@ void timer() {
 
 
 void score() {
+  textSize(30);
+  text(score,100,30);
+  text("Score",5,30);
+  
   //  /*when the frog was hit, its lifepoint minust one, so when he die, it was zero.*/
   //  if(/*frog's frogPos.y<20*/){
   //    /*win*/;
