@@ -1,8 +1,9 @@
 // Collaboration of Yi, Angela, Gentry and Yumeng
 Space[] spaceParticles = new Space[200];
 Frogger frog;
-A[] spaceship1 = new A[50];
+A[] spaceship1 = new A[10];
 B[] spaceship2 = new B[10];
+C[] spaceship3 = new C[3];
 
 boolean upPressed;
 boolean downPressed;
@@ -10,6 +11,8 @@ boolean rightPressed;
 boolean leftPressed;
 float frogSpeed;
 int bigness;
+
+
 
 
 float r;//endscreen the frog will rotate
@@ -22,9 +25,12 @@ int score;
 int timeSizeX=100;
 int timeSizeY=10;
 int timePosX=470;
+color c = color(0,255,0);
 /*here means the frog has certaim life point, everytime the frog was hit,
  its life point will minus one. Frog will die when its life point reaches zero.
  this is just my imagination of the scoring. I'll do the start and end according to this.*/
+
+
 
 
 
@@ -32,7 +38,13 @@ void setup() {
   size(600, 600);
   bigness = 1;
 
+
   //pictures
+
+  
+
+//pictures
+
   frogEnd=loadImage("frog_end.png");
   frogEndVel=new PVector(random(-10, 10), random(-10, 10));
   frogStart=loadImage("frog_start.png");
@@ -41,6 +53,13 @@ void setup() {
   //life point
   lifePoint=6;
   r=0;
+
+
+
+
+
+
+  
 
 
 
@@ -62,6 +81,10 @@ void setup() {
   for (int i = 0; i <spaceship2.length; i++) {
     spaceship2[i] = new B(i*random(240, 260));
   }
+  
+  for (int i = 0; i <spaceship3.length; i++) {
+    spaceship3[i] = new C(i*random(240, 260));
+  }
 }
 
 void draw() {
@@ -72,6 +95,7 @@ void draw() {
 
 
   
+
   if (lifePoint>0) {
     if (lifePoint<=5) {
       //if lifepoint is bigger than 0, and frog has been moved, then play mode is on
@@ -87,6 +111,12 @@ void draw() {
         spaceship2[i].move();
         spaceship2[i].collision();
       }
+      for (int i = 0; i <spaceship3.length; i++) {
+        spaceship3[i].display();
+        spaceship3[i].move();
+        spaceship3[i].collision();
+      }
+
 
       score(); //use lifepoint to decide which screen should appear
       timer();
@@ -100,12 +130,24 @@ void draw() {
       //if lifepoint is bigger than 0, and frog position is just ready, then start screen
       startScreen();
     }
+
+
+
+
   }
   //if the lifepoint reaches 0, frog died and endScreen was shown
   else {
     endScreen();
   }
+  println(mouseX, mouseY);
 }
+
+
+
+  
+  
+  
+
 
 
 //These are the boundaries that separate the spaceship paths. think of these as safe zones for our frogger class.
@@ -120,18 +162,41 @@ void sections() {
 
 //When the frog class fills all of these endZones, the winning screen will display.
 void endZone () {
+
   //  rect(0,0,bigness,y);
+
+//  rect(0,0,bigness,y);
+
+
+  bigness = 50;
+  rect((bigness/2),bigness/2,bigness,bigness);
+  rect((width/2),bigness/2,bigness,bigness);
+  rect((bigness/2)+width-bigness,bigness/2,bigness,bigness);
+  
+
 }
 
 //A clock countdown. When a certain amount of time passes, the game is reset and the player must try again.
 void timer() {
-  fill(255);
-  rect(timePosX,575,timeSizeX,timeSizeY);
   
-    //timeSizeX-=0.1;
-    if (timeSizeX==0){
-      timeSizeX=100;
+  rectMode(CORNER);
+  fill(c);
+  rect(timePosX,570,timeSizeX+60,timeSizeY);
+  timeSizeX = -second();
+  println(timeSizeX+60,"time");
+   // timeSizeX-=0.0001;
+
+   
+    if (timeSizeX+60 < 30 && timeSizeX+60 > 10){
+      c = color(255,255,0);
+    } 
+    if (timeSizeX+60 < 10) {
+     c = color(255,0,0); 
+    } else {
+     c = color(0,255,0);
     }
+    
+    
   
 }
 

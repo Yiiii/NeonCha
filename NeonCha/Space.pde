@@ -8,7 +8,7 @@ class Space {
   
  Space(float m, float x, float y) {
    mass = m;
-   maxSpeed = 10;
+   maxSpeed = 3;
    location = new PVector(0,0);
    velocity = new PVector(0,1);
    acceleration = new PVector(0,0);
@@ -31,6 +31,16 @@ void move() {
   frogSpeed = velocity.y;
   acceleration.mult(0);
   
+  if (leftPressed == true) {
+   velocity.x = 2; 
+  } else if (rightPressed == true) {
+   velocity.x = -2;
+  } else if (downPressed == true) {
+   velocity.y = 1;
+  } else { 
+   velocity.x = 0;
+  }
+  
   
   
 }
@@ -39,11 +49,17 @@ void collision() {
   if(location.y > height) {
     location.y = 0;
   }
+  if (location.x > width) {
+   location.x = 0; 
+  }
+  if (location.x < 0) {
+   location.x = width; 
+  }
 }
 
 void applyForce(PVector force) {
   PVector f = PVector.mult(force,mass);
-  acceleration.add(f);
+  velocity.add(f);
 }
   
   

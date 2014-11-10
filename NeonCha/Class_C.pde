@@ -1,5 +1,5 @@
 class C {
-  PVector posC = new PVector(0, height-50);
+  PVector posC = new PVector(0, height-150);
 
   float velC;
   PImage spaceship3;
@@ -8,7 +8,7 @@ class C {
    posC.x = positionX;
 
     velC = 2;
-    spaceship3 = loadImage("spaceship.gif");
+    spaceship3 = loadImage("spaceship3.gif");
 
   }
   void display() {
