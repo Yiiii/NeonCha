@@ -1,7 +1,7 @@
 // Collaboration of Yi, Angela, Gentry and Yumeng
 Space[] spaceParticles = new Space[200];
 Frogger frog;
-A[] spaceship1 = new A[10];
+A[] spaceship1 = new A[3];
 B[] spaceship2 = new B[10];
 C[] spaceship3 = new C[3];
 
@@ -30,13 +30,15 @@ color c = color(0,255,0);
  its life point will minus one. Frog will die when its life point reaches zero.
  this is just my imagination of the scoring. I'll do the start and end according to this.*/
 
-
+int savedTime;
+int totalTime = 60000;
 
 
 
 void setup() {
   size(600, 600);
   bigness = 1;
+  savedTime = millis();
 
 
   //pictures
@@ -103,6 +105,7 @@ void draw() {
       for (int i = 0; i <spaceship1.length; i++) {
         spaceship1[i].display();
         spaceship1[i].move();
+        spaceship1[i].collision();
         //  println(spaceship1[i]);
       }
 
@@ -139,7 +142,7 @@ void draw() {
   else {
     endScreen();
   }
-  println(mouseX, mouseY);
+  //println(mouseX, mouseY);
 }
 
 
@@ -179,21 +182,39 @@ void endZone () {
 //A clock countdown. When a certain amount of time passes, the game is reset and the player must try again.
 void timer() {
   
+  int passedTime = millis() - savedTime;
+  if (passedTime > totalTime) {
+   lifePoint = 0; 
+   savedTime = millis();
+
+  } 
+  
   rectMode(CORNER);
   fill(c);
-  rect(timePosX,570,timeSizeX+60,timeSizeY);
-  timeSizeX = -second();
-  println(timeSizeX+60,"time");
-   // timeSizeX-=0.0001;
+  
+  timeSizeX = -passedTime;
+  float timeSize = map(timeSizeX,0,totalTime,0,60);
 
+  rect(timePosX,570,timeSize+60,timeSizeY);
+  stroke(255);
+  noFill();
+  rect(timePosX,570,60,timeSizeY);
+   // timeSizeX-=0.0001;
+println(timeSize+60,"time");
    
-    if (timeSizeX+60 < 30 && timeSizeX+60 > 10){
+    if (timeSize+60 < 30 && timeSize+60 >= 10){
       c = color(255,255,0);
-    } 
-    if (timeSizeX+60 < 10) {
+      println("YELLOW!");
+    } else if (timeSize+60 < 10) {
      c = color(255,0,0); 
     } else {
      c = color(0,255,0);
+     println("GREEN!");
+    } 
+    if (timeSize+60 <10) {
+     fill(255,0,0,100);
+     textSize(30);
+     text(timeSize+60,frog.position.x+50,frog.position.y+50); 
     }
     
     
@@ -206,6 +227,7 @@ void score() {
   text(lifePoint, 100, 580);
   text("Lives",10,580);
   text("Time",540,580);
+  //text(");
   
   //  /*when the frog was hit, its lifepoint minust one, so when he die, it was zero.*/
   //  if(/*frog's frogPos.y<20*/){
