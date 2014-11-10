@@ -3,7 +3,7 @@ Space[] spaceParticles = new Space[200];
 Frogger frog;
 A[] spaceship1 = new A[3];
 B[] spaceship2 = new B[10];
-C[] spaceship3 = new C[3];
+C[] spaceship3 = new C[2];
 
 boolean upPressed;
 boolean downPressed;
@@ -128,6 +128,7 @@ void draw() {
       frog.display();
       frog.move();
       frog.collision();
+      hit();//here!!!!
       
     } else {
       //if lifepoint is bigger than 0, and frog position is just ready, then start screen
@@ -272,12 +273,42 @@ image(endText,0,300 );
 }
 
 void hit() {
-  //if(frog.position.x-size/2<posB.x){
-    //score--;
-  //}
-    //if(score==0){
-      //setup();
-    //}
+  //for the first line of spaceship 
+  if(frog.position.y<550&&frog.position.y>420 ){
+  for(int i=0;i<spaceship3.length;i++){
+  if(frog.position.x+25 >= spaceship3[i].posC.x-55 && frog.position.x-25 <=  spaceship3[i].posC.x+55){
+  lifePoint--;
+  println(lifePoint);
+  frog.position.y=600;
+  frog.position.x = width/2;
+  
+  }
+  }
+  }
+  
+if(frog.position.y<360&&frog.position.y>242 ){
+  for(int i=0;i<spaceship2.length;i++){
+  if(frog.position.x+25 >= spaceship2[i].posB.x-30 && frog.position.x-25 <=  spaceship2[i].posB.x+30){
+  lifePoint--;
+  println(lifePoint);
+  frog.position.y=600;
+  frog.position.x = width/2;
+  
+  }
+  }
+}
+
+  if(frog.position.y<180&&frog.position.y>55 ){
+  for(int i=0;i<spaceship1.length;i++){
+  if(frog.position.x+25 >= spaceship1[i].posA.x-55 && frog.position.x-25 <=  spaceship1[i].posA.x+55){
+  lifePoint--;
+  println(lifePoint);
+  frog.position.y=600;
+  frog.position.x = width/2;
+  
+  }
+  }
+  }
   
 }
 

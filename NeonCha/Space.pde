@@ -8,7 +8,7 @@ class Space {
   
  Space(float m, float x, float y) {
    mass = m;
-   maxSpeed = 3;
+   maxSpeed = 15;
    location = new PVector(0,0);
    velocity = new PVector(0,1);
    acceleration = new PVector(0,0);
