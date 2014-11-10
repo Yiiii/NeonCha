@@ -251,6 +251,8 @@ image(endText,0,300 );
 }
 
 void hit() {
+  
+  //WRITTEN BY YI!!!!!! CREDIT!!!
   //for the first line of spaceship 
   if(frog.position.y<550&&frog.position.y>420 ){
   for(int i=0;i<spaceship3.length;i++){
