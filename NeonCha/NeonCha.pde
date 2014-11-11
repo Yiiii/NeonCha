@@ -1,7 +1,7 @@
 // Collaboration of Yi, Angela, Gentry and Yumeng
 Space[] spaceParticles = new Space[200];
 Frogger frog;
-A[] spaceship1 = new A[3];
+A[] spaceship1 = new A[2];
 B[] spaceship2 = new B[10];
 C[] spaceship3 = new C[2];
 
@@ -261,7 +261,7 @@ void startScreen() {
 
 void endScreen() {
   frog.position.x=width/2;
-  frog.position.y=height/2;
+  frog.position.y=height;
 image(endText,0,300 );
   pushMatrix();
   translate(frog.position.x-frogEndVel.x, frog.position.y-frogEndVel.y);
